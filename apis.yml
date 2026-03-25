@@ -1,12 +1,17 @@
 aid: smithy
 name: Smithy
 description: >-
-  Smithy is an open source interface definition language and toolchain from AWS for defining and generating API clients and services.
+  Smithy is an open source interface definition language and toolchain from AWS
+  for defining, validating, and generating API clients and services. It powers
+  the AWS SDK code generation pipeline and supports building protocol-agnostic
+  API models with traits, validators, and code generators.
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
   - SDKs
   - Code Generation
+  - IDL
+  - AWS
 url: >-
   https://raw.githubusercontent.com/api-evangelist/smithy/refs/heads/main/apis.yml
 created: '2026-03-25'
@@ -16,21 +21,30 @@ apis:
   - aid: smithy:smithy
     name: Smithy
     description: >-
-      Smithy is an open source interface definition language and toolchain from AWS for defining and generating API clients and services.
+      Smithy is an interface definition language and toolchain from AWS for
+      defining, validating, and generating protocol-agnostic API clients
+      and services.
     humanURL: https://smithy.io
     tags:
       - SDKs
       - Code Generation
+      - IDL
     properties:
       - type: Documentation
+        url: https://smithy.io/2.0/
+      - type: Getting Started
         url: https://smithy.io/2.0/quickstart.html
+      - type: GitHub Repository
+        url: https://github.com/smithy-lang/smithy
 common:
   - type: Website
     url: https://smithy.io
   - type: Documentation
-    url: https://smithy.io/2.0/quickstart.html
+    url: https://smithy.io/2.0/
   - type: GitHub Organization
     url: https://github.com/smithy-lang
+  - type: Specification
+    url: https://smithy.io/2.0/spec/
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
