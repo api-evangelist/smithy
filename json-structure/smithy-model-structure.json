@@ -1,0 +1,27 @@
+{
+  "title": "Smithy Model JSON AST Structure",
+  "description": "JSON structure documentation for a Smithy model in JSON AST representation",
+  "type": "object",
+  "fields": [
+    {"name": "smithy", "type": "string", "required": true, "description": "Smithy version (e.g., '2.0')"},
+    {"name": "metadata", "type": "object", "required": false, "description": "Model-level metadata key-value pairs"},
+    {"name": "shapes", "type": "object", "required": false, "description": "All shapes in the model keyed by absolute shape ID", "items": {
+      "type": "object",
+      "description": "A Smithy shape",
+      "fields": [
+        {"name": "type", "type": "enum", "required": true, "values": ["blob", "boolean", "string", "integer", "long", "float", "double", "timestamp", "document", "list", "map", "structure", "union", "enum", "intEnum", "service", "resource", "operation"]},
+        {"name": "traits", "type": "object", "required": false, "description": "Traits applied to the shape"},
+        {"name": "members", "type": "object", "required": false, "description": "Named members (for structures and unions)"},
+        {"name": "member", "type": "object", "required": false, "description": "Collection member (for lists)"},
+        {"name": "key", "type": "object", "required": false, "description": "Map key shape (for maps)"},
+        {"name": "value", "type": "object", "required": false, "description": "Map value shape (for maps)"},
+        {"name": "input", "type": "object", "required": false, "description": "Input shape reference (for operations)"},
+        {"name": "output", "type": "object", "required": false, "description": "Output shape reference (for operations)"},
+        {"name": "errors", "type": "array", "required": false, "description": "Error shape references (for operations)"},
+        {"name": "version", "type": "string", "required": false, "description": "Service API version (for services)"},
+        {"name": "operations", "type": "array", "required": false, "description": "Operation references (for services and resources)"},
+        {"name": "resources", "type": "array", "required": false, "description": "Resource references (for services)"}
+      ]
+    }}
+  ]
+}

@@ -1,0 +1,208 @@
+vocabulary:
+  name: Smithy IDL Vocabulary
+  description: >-
+    Normative vocabulary for the Smithy Interface Definition Language (IDL) 2.0,
+    covering shapes, traits, protocols, and toolchain concepts. This is the
+    authoritative set of terms used in Smithy API model definitions.
+  version: "2.0"
+  created: "2026-05-02"
+  modified: "2026-05-02"
+  tags:
+    - API Design
+    - IDL
+    - Code Generation
+
+# Smithy Shapes (the core type system)
+shapes:
+  simple_types:
+    - blob
+    - boolean
+    - string
+    - byte
+    - short
+    - integer
+    - long
+    - float
+    - double
+    - bigInteger
+    - bigDecimal
+    - timestamp
+    - document
+
+  aggregate_types:
+    - list
+    - map
+    - structure
+    - union
+
+  named_types:
+    - enum
+    - intEnum
+
+  service_types:
+    - service
+    - resource
+    - operation
+
+terms:
+  - term: Shape
+    definition: >-
+      The fundamental unit of Smithy models. Every API type, operation, resource,
+      and service is defined as a shape. Shapes have a type and optional traits.
+    synonyms: [type definition, model element]
+
+  - term: Trait
+    definition: >-
+      An annotation applied to a shape that adds metadata, constraints, protocol
+      bindings, or documentation. Traits are themselves defined as shapes using
+      the @trait trait. Examples: @required, @http, @documentation, @readonly.
+    synonyms: [annotation, decorator, attribute]
+
+  - term: Shape ID
+    definition: >-
+      A unique identifier for a shape, consisting of a namespace, shape name,
+      and optional member name. Format: namespace#ShapeName$memberName
+      (e.g., com.example#MyService or smithy.api#String).
+    synonyms: [shape identifier, qualified name]
+
+  - term: Namespace
+    definition: >-
+      A logical grouping prefix for shape IDs, similar to a package in Java.
+      Namespaces prevent naming collisions between independently developed models.
+    synonyms: [package, module]
+
+  - term: Service Shape
+    definition: >-
+      A shape type that represents an API service with a specific version.
+      Contains references to operations and resources, and has protocol traits
+      applied to it to define the wire format.
+    synonyms: [service definition, API service]
+
+  - term: Operation Shape
+    definition: >-
+      A shape type representing a single API operation. Has input, output, and
+      error shape references. Can have HTTP binding traits applied.
+    synonyms: [API operation, RPC method, endpoint]
+
+  - term: Resource Shape
+    definition: >-
+      A shape type representing a REST resource with identifier properties and
+      lifecycle operations (create, read, update, delete, list).
+    synonyms: [REST resource, entity]
+
+  - term: Structure Shape
+    definition: >-
+      An aggregate shape type with named members, similar to a class or struct.
+      Used to define request/response bodies, data models, and nested types.
+    synonyms: [struct, object type, data model]
+
+  - term: Protocol Trait
+    definition: >-
+      A trait that specifies the wire protocol for serializing and deserializing
+      data. AWS protocols include restJson1, restXml, json1.0, json1.1, and others.
+    synonyms: [wire protocol, serialization protocol]
+
+  - term: Mixin
+    definition: >-
+      A reusable set of traits and members that can be mixed into multiple shapes
+      using the @mixin and mixins[] syntax. Introduced in Smithy 2.0.
+    synonyms: [shared definition, trait composition]
+
+  - term: Selector
+    definition: >-
+      A query language built into Smithy for selecting shapes that match specific
+      criteria. Used in validators, linters, and transformations.
+    synonyms: [shape selector, query]
+
+  - term: Projection
+    definition: >-
+      A named configuration in a smithy-build.json that defines a set of transforms
+      to apply to a model to produce a specific artifact (e.g., a client SDK model).
+    synonyms: [build configuration, artifact configuration]
+
+  - term: Transform
+    definition: >-
+      A model transformation step that modifies a Smithy model, such as removing
+      operations, applying trait filters, or converting between formats.
+    synonyms: [model transform, projection step]
+
+protocols:
+  aws:
+    - aws.protocols#restJson1
+    - aws.protocols#restXml
+    - aws.protocols#json1_0
+    - aws.protocols#json1_1
+    - aws.protocols#query
+    - aws.protocols#ec2Query
+  smithy:
+    - smithy.protocols#rpcv2Cbor
+  mqtt:
+    - aws.protocols#mqttJson
+
+common_traits:
+  behavioral:
+    - smithy.api#readonly
+    - smithy.api#idempotent
+    - smithy.api#httpChecksumRequired
+  constraint:
+    - smithy.api#required
+    - smithy.api#length
+    - smithy.api#range
+    - smithy.api#pattern
+    - smithy.api#enum
+    - smithy.api#uniqueItems
+  http_binding:
+    - smithy.api#http
+    - smithy.api#httpLabel
+    - smithy.api#httpQuery
+    - smithy.api#httpHeader
+    - smithy.api#httpPayload
+    - smithy.api#httpError
+    - smithy.api#httpPrefixHeaders
+  documentation:
+    - smithy.api#documentation
+    - smithy.api#externalDocumentation
+    - smithy.api#title
+    - smithy.api#examples
+    - smithy.api#sensitive
+  streaming:
+    - smithy.api#streaming
+    - smithy.api#eventStream
+  auth:
+    - smithy.api#auth
+    - smithy.api#optionalAuth
+    - smithy.api#httpBasicAuth
+    - smithy.api#httpBearerAuth
+    - smithy.api#httpApiKeyAuth
+    - smithy.api#httpDigestAuth
+    - aws.auth#sigv4
+
+cli_commands:
+  - command: smithy build
+    description: Build and validate a Smithy model, generating artifacts
+  - command: smithy validate
+    description: Validate a Smithy model and report errors and warnings
+  - command: smithy diff
+    description: Compare two Smithy model versions for breaking changes
+  - command: smithy format
+    description: Format Smithy IDL files according to standard style
+  - command: smithy clean
+    description: Remove build output from the build directory
+  - command: smithy init
+    description: Initialize a new Smithy project from a template
+
+code_generators:
+  - language: Java
+    repo: smithy-lang/smithy
+  - language: Rust
+    repo: smithy-lang/smithy-rs
+  - language: Python
+    repo: smithy-lang/smithy-python
+  - language: TypeScript
+    repo: awslabs/smithy-typescript
+  - language: Kotlin
+    repo: smithy-lang/smithy-kotlin
+  - language: Go
+    repo: aws/smithy-go
+  - language: Swift
+    repo: aws/aws-sdk-swift

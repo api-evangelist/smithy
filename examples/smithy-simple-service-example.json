@@ -1,0 +1,109 @@
+{
+  "description": "A simple Smithy 2.0 service model in JSON AST format demonstrating a basic CRUD resource API",
+  "format": "Smithy JSON AST",
+  "version": "2.0",
+  "model": {
+    "smithy": "2.0",
+    "metadata": {
+      "suppressions": []
+    },
+    "shapes": {
+      "com.example#WeatherService": {
+        "type": "service",
+        "version": "2026-05-02",
+        "resources": [
+          {"target": "com.example#City"}
+        ],
+        "traits": {
+          "aws.protocols#restJson1": {},
+          "smithy.api#title": "Weather Service"
+        }
+      },
+      "com.example#City": {
+        "type": "resource",
+        "identifiers": {
+          "cityId": {"target": "com.example#CityId"}
+        },
+        "read": {"target": "com.example#GetCity"},
+        "list": {"target": "com.example#ListCities"},
+        "resources": [
+          {"target": "com.example#Forecast"}
+        ]
+      },
+      "com.example#GetCity": {
+        "type": "operation",
+        "input": {"target": "com.example#GetCityInput"},
+        "output": {"target": "com.example#GetCityOutput"},
+        "errors": [
+          {"target": "com.example#NoSuchResource"}
+        ],
+        "traits": {
+          "smithy.api#http": {
+            "method": "GET",
+            "uri": "/cities/{cityId}",
+            "code": 200
+          },
+          "smithy.api#readonly": {}
+        }
+      },
+      "com.example#GetCityInput": {
+        "type": "structure",
+        "members": {
+          "cityId": {
+            "target": "com.example#CityId",
+            "traits": {
+              "smithy.api#httpLabel": {},
+              "smithy.api#required": {}
+            }
+          }
+        }
+      },
+      "com.example#GetCityOutput": {
+        "type": "structure",
+        "members": {
+          "name": {
+            "target": "smithy.api#String",
+            "traits": {
+              "smithy.api#required": {}
+            }
+          },
+          "coordinates": {
+            "target": "com.example#CityCoordinates"
+          }
+        }
+      },
+      "com.example#CityId": {
+        "type": "string",
+        "traits": {
+          "smithy.api#pattern": "^[A-Za-z0-9 ]+$"
+        }
+      },
+      "com.example#CityCoordinates": {
+        "type": "structure",
+        "members": {
+          "latitude": {
+            "target": "smithy.api#Float",
+            "traits": {"smithy.api#required": {}}
+          },
+          "longitude": {
+            "target": "smithy.api#Float",
+            "traits": {"smithy.api#required": {}}
+          }
+        }
+      },
+      "com.example#NoSuchResource": {
+        "type": "structure",
+        "members": {
+          "resourceType": {
+            "target": "smithy.api#String",
+            "traits": {"smithy.api#required": {}}
+          }
+        },
+        "traits": {
+          "smithy.api#error": "client",
+          "smithy.api#httpError": 404
+        }
+      }
+    }
+  }
+}

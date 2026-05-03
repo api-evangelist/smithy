@@ -1,0 +1,32 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "smithy": "https://smithy.io/vocab#",
+    "Model": "SoftwareSourceCode",
+    "Shape": "smithy:Shape",
+    "Trait": "smithy:Trait",
+    "Service": "WebAPI",
+    "Operation": "EntryPoint",
+    "Resource": "smithy:Resource",
+    "smithy:version": "softwareVersion",
+    "smithy:shapes": "hasPart",
+    "smithy:type": "additionalType",
+    "smithy:traits": "smithy:traits",
+    "smithy:members": "smithy:members",
+    "smithy:target": "smithy:target",
+    "smithy:input": "smithy:input",
+    "smithy:output": "smithy:output",
+    "smithy:errors": "smithy:errors",
+    "smithy:operations": "potentialAction",
+    "smithy:resources": "hasPart",
+    "smithy:version-field": "version",
+    "smithy:metadata": "additionalProperty",
+    "smithy:namespace": "identifier",
+    "smithy:protocol": "encodingFormat",
+    "smithy:shapeId": "@id",
+    "smithy:documentation": "description",
+    "smithy:required": "valueRequired",
+    "smithy:httpMethod": "httpMethod",
+    "smithy:httpUri": "url"
+  }
+}

@@ -1,0 +1,120 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://smithy.io/schemas/shape",
+  "title": "Smithy Shape",
+  "description": "A Smithy IDL shape definition - the core building block of Smithy API models",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string",
+      "description": "The Smithy shape type",
+      "enum": [
+        "blob",
+        "boolean",
+        "string",
+        "byte",
+        "short",
+        "integer",
+        "long",
+        "float",
+        "double",
+        "bigInteger",
+        "bigDecimal",
+        "timestamp",
+        "document",
+        "list",
+        "map",
+        "structure",
+        "union",
+        "enum",
+        "intEnum",
+        "service",
+        "resource",
+        "operation"
+      ]
+    },
+    "traits": {
+      "type": "object",
+      "description": "Traits applied to this shape, keyed by trait shape ID",
+      "additionalProperties": true
+    },
+    "members": {
+      "type": "object",
+      "description": "Member shapes (for structure, union, enum, intEnum)",
+      "additionalProperties": {
+        "$ref": "#/definitions/MemberShape"
+      }
+    },
+    "member": {
+      "description": "The member shape (for list, set)",
+      "$ref": "#/definitions/MemberShape"
+    },
+    "key": {
+      "description": "The key member shape (for map)",
+      "$ref": "#/definitions/MemberShape"
+    },
+    "value": {
+      "description": "The value member shape (for map)",
+      "$ref": "#/definitions/MemberShape"
+    },
+    "input": {
+      "description": "The input shape reference (for operation)",
+      "$ref": "#/definitions/ShapeRef"
+    },
+    "output": {
+      "description": "The output shape reference (for operation)",
+      "$ref": "#/definitions/ShapeRef"
+    },
+    "errors": {
+      "type": "array",
+      "description": "Error shape references (for operation)",
+      "items": {
+        "$ref": "#/definitions/ShapeRef"
+      }
+    },
+    "version": {
+      "type": "string",
+      "description": "The version of the service (for service shape)"
+    },
+    "operations": {
+      "type": "array",
+      "description": "Operations in a service or resource",
+      "items": {
+        "$ref": "#/definitions/ShapeRef"
+      }
+    },
+    "resources": {
+      "type": "array",
+      "description": "Resources in a service",
+      "items": {
+        "$ref": "#/definitions/ShapeRef"
+      }
+    }
+  },
+  "definitions": {
+    "MemberShape": {
+      "type": "object",
+      "properties": {
+        "target": {
+          "type": "string",
+          "description": "The shape ID that this member targets"
+        },
+        "traits": {
+          "type": "object",
+          "description": "Traits applied to this member"
+        }
+      },
+      "required": ["target"]
+    },
+    "ShapeRef": {
+      "type": "object",
+      "properties": {
+        "target": {
+          "type": "string",
+          "description": "The shape ID being referenced"
+        }
+      },
+      "required": ["target"]
+    }
+  }
+}

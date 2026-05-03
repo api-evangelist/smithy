@@ -1,0 +1,86 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://smithy.io/schemas/model",
+  "title": "Smithy Model (JSON AST)",
+  "description": "A Smithy model represented in JSON AST format",
+  "type": "object",
+  "required": ["smithy"],
+  "properties": {
+    "smithy": {
+      "type": "string",
+      "description": "The Smithy version (e.g., '2.0')",
+      "pattern": "^\\d+\\.\\d+$"
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Model-level metadata key-value pairs",
+      "additionalProperties": true
+    },
+    "shapes": {
+      "type": "object",
+      "description": "Shapes defined in the model, keyed by absolute shape ID",
+      "additionalProperties": {
+        "$ref": "smithy-shape-schema.json"
+      }
+    }
+  },
+  "examples": [
+    {
+      "smithy": "2.0",
+      "metadata": {
+        "suppressions": []
+      },
+      "shapes": {
+        "com.example#MyService": {
+          "type": "service",
+          "version": "2026-05-02",
+          "operations": [
+            {"target": "com.example#GetItem"}
+          ],
+          "traits": {
+            "aws.protocols#restJson1": {}
+          }
+        },
+        "com.example#GetItem": {
+          "type": "operation",
+          "input": {"target": "com.example#GetItemInput"},
+          "output": {"target": "com.example#GetItemOutput"},
+          "errors": [
+            {"target": "com.example#NotFoundError"}
+          ],
+          "traits": {
+            "smithy.api#http": {
+              "method": "GET",
+              "uri": "/items/{id}",
+              "code": 200
+            },
+            "smithy.api#readonly": {}
+          }
+        },
+        "com.example#GetItemInput": {
+          "type": "structure",
+          "members": {
+            "id": {
+              "target": "smithy.api#String",
+              "traits": {
+                "smithy.api#httpLabel": {},
+                "smithy.api#required": {}
+              }
+            }
+          }
+        },
+        "com.example#GetItemOutput": {
+          "type": "structure",
+          "members": {
+            "name": {
+              "target": "smithy.api#String"
+            },
+            "value": {
+              "target": "smithy.api#String"
+            }
+          }
+        }
+      }
+    }
+  ]
+}
