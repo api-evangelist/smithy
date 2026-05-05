@@ -1,0 +1,13 @@
+{
+  "repo": "smithy",
+  "feeds": [
+    {
+      "source": "https://aws.amazon.com/blogs/developer/tag/smithy/",
+      "feed_url": "https://aws.amazon.com/blogs/developer/tag/smithy/feed/",
+      "saved": 8,
+      "title": "smithy \u2013 AWS Developer Tools Blog"
+    }
+  ],
+  "post_count": 8,
+  "fetched": "2026-05-03T23:36:30Z"
+}
