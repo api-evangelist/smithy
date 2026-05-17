@@ -39,9 +39,9 @@ apis:
         url: https://smithy.io/2.0/
       - type: Specification
         url: https://smithy.io/2.0/spec/
-      - type: Getting Started
+      - type: GettingStarted
         url: https://smithy.io/2.0/quickstart.html
-      - type: GitHub Repository
+      - type: GitHubRepository
         url: https://github.com/smithy-lang/smithy
 
   - aid: smithy:smithy-cli
@@ -59,7 +59,7 @@ apis:
     properties:
       - type: Documentation
         url: https://smithy.io/2.0/guides/smithy-cli/index.html
-      - type: GitHub Repository
+      - type: GitHubRepository
         url: https://github.com/smithy-lang/smithy
       - type: Homebrew
         url: https://github.com/smithy-lang/homebrew-tap
@@ -71,11 +71,11 @@ common:
     url: https://smithy.io/2.0/
   - type: Specification
     url: https://smithy.io/2.0/spec/
-  - type: Getting Started
+  - type: GettingStarted
     url: https://smithy.io/2.0/quickstart.html
-  - type: GitHub Organization
+  - type: GitHubOrganization
     url: https://github.com/smithy-lang
-  - type: GitHub Repository
+  - type: GitHubRepository
     url: https://github.com/smithy-lang/smithy
   - type: Examples
     url: https://github.com/smithy-lang/smithy-examples
