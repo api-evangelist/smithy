@@ -2,12 +2,20 @@
   "repo": "smithy",
   "feeds": [
     {
-      "source": "https://aws.amazon.com/blogs/developer/tag/smithy/",
+      "source": "https://aws.amazon.com/blogs/developer/tag/smithy/feed/",
       "feed_url": "https://aws.amazon.com/blogs/developer/tag/smithy/feed/",
-      "title": "smithy \u2013 AWS Developer Tools Blog",
-      "saved": 1
+      "title": "",
+      "saved": 0,
+      "method": "feed"
+    },
+    {
+      "source": "https://github.com/aws/api-models-aws",
+      "feed_url": "https://github.com/aws/api-models-aws",
+      "title": "",
+      "saved": 0,
+      "method": "none"
     }
   ],
   "post_count": 9,
-  "fetched": "2026-05-17T20:20:35Z"
+  "fetched": "2026-06-01T23:35:02Z"
 }
