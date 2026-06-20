@@ -7,7 +7,7 @@ description: >-
   code generation pipeline and supports protocol-agnostic API modeling with traits,
   validators, and code generators. Smithy IDL 2.0 is the current stable version.
 type: Index
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
   - AWS
   - Code Generation
