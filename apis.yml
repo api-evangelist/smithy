@@ -65,6 +65,8 @@ apis:
         url: https://github.com/smithy-lang/homebrew-tap
 
 common:
+  - type: DomainSecurity
+    url: security/smithy-domain-security.yml
   - type: Website
     url: https://smithy.io
   - type: Documentation
