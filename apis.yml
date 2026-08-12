@@ -77,6 +77,9 @@ apis:
         url: https://github.com/smithy-lang/homebrew-tap
 
 common:
+  - type: License
+    name: Apache-2.0
+    url: https://github.com/smithy-lang/smithy/blob/main/LICENSE
   - type: DomainSecurity
     url: security/smithy-domain-security.yml
   - type: Website
