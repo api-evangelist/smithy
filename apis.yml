@@ -7,6 +7,18 @@ description: >-
   code generation pipeline and supports protocol-agnostic API modeling with traits,
   validators, and code generators. Smithy IDL 2.0 is the current stable version.
 type: Index
+deliveryModel:
+  model: self-hosted
+  license: Apache-2.0
+  open_source: true
+  commercial: false
+  callable_host: false
+  label: Self-hosted open source · you run it yourself
+  confidence: high
+  source:
+  - license
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: unknown
@@ -85,6 +97,14 @@ apis:
         url: https://github.com/smithy-lang/homebrew-tap
 
 common:
+  - type: IssueTracker
+    url: https://github.com/smithy-lang/smithy/issues
+  - type: Releases
+    url: https://github.com/smithy-lang/smithy/releases
+  - type: CodeOfConduct
+    url: https://github.com/smithy-lang/smithy/blob/main/CODE_OF_CONDUCT.md
+  - type: ContributionGuide
+    url: https://github.com/smithy-lang/smithy/blob/main/CONTRIBUTING.md
   - type: License
     name: Apache-2.0
     url: https://github.com/smithy-lang/smithy/blob/main/LICENSE
